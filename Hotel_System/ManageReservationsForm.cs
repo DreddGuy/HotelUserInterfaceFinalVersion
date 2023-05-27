@@ -18,6 +18,15 @@ namespace HotelUserInterfaceTest
         {
             InitializeComponent();
         }
+        private void btnClearFields_Click(object sender, EventArgs e)
+        {
+            tbReservID.Text = "";
+            tbClientID.SelectedIndex = 0;
+            cbRoomType.SelectedIndex = 0;
+            cbRoomNumber.SelectedIndex = 0; 
+            dateTimePickerIN.Value = DateTime.Now;
+            dateTimePickerOUT.Value = DateTime.Now;
+        }
 
         Room room = new Room();
         Reservation reservation = new Reservation();
@@ -33,8 +42,8 @@ namespace HotelUserInterfaceTest
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
 
-                tbClientID.DisplayMember = "CustomerID"; 
-                tbClientID.ValueMember = ""; 
+                tbClientID.DisplayMember = "CustomerID";
+                tbClientID.ValueMember = "";
                 tbClientID.DataSource = dataTable;
 
                 string query2 = "SELECT RoomNumber FROM Rooms";
@@ -60,15 +69,6 @@ namespace HotelUserInterfaceTest
             dgvReservations.DataSource = reservation.GetAllReservations();
         }
 
-        private void btnClearFields_Click(object sender, EventArgs e)
-        {
-            tbReservID.Text = "";
-            tbClientID.SelectedIndex = 0;
-            cbRoomType.SelectedIndex = 0;
-            cbRoomNumber.SelectedIndex = 0; 
-            dateTimePickerIN.Value = DateTime.Now;
-            dateTimePickerOUT.Value = DateTime.Now;
-        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
